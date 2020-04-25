@@ -23,7 +23,7 @@ export class BooksService {
     storeBook(book): Promise<any> {
         return new Promise(resolve => {
             this.books.push(book);
-            resolve(book);
+            resolve(this.books);
         });
     }
 
@@ -35,6 +35,7 @@ export class BooksService {
                 throw new HttpException('Book does not exist!', 404);
             }
             this.books.splice(index, 1);
+            resolve(this.books);
         })
     }
 }
